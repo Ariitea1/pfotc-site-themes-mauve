@@ -3,111 +3,73 @@
 @tailwind utilities;
 
 /* =========================================================
-   🎨 Couleur de fond PFOTC
+   🎨 COULEUR DE FOND ET TEXTE – Mauve Aurora
    ========================================================= */
 :root {
-  --bg: #0b1220;
+  --bg: #150a1f;
 }
 
 html, body {
-  background-color: var(--bg);
-  color: rgb(226 232 240); /* slate-200 */
+  background: radial-gradient(circle at 50% 100%, #2a1250, #150a1f 70%);
+  color: rgb(232 230 250);
   overflow-x: hidden;
 }
 
 /* =========================================================
-   🌌 PFOTC HALO – effet lumineux "horizon terrestre"
+   🌌 PFOTC AURA – Liseré lumineux blanc-rosé (Aurora)
    ========================================================= */
-.halo {
+.aura {
   position: absolute;
-  bottom: -200px;
+  top: 45%;
   left: 50%;
-  width: 160%;
-  height: 700px;
-  transform: translateX(-50%);
+  width: 200%;
+  height: 130%;
+  transform: translate(-50%, -50%) rotate(12deg);
   background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(180, 230, 255, 0.25) 20%,
-    rgba(0, 180, 255, 0.15) 45%,
-    rgba(0, 120, 255, 0.1) 70%,
+    ellipse at 50% 80%,
+    rgba(255, 240, 255, 0.9) 0%,
+    rgba(255, 180, 255, 0.3) 25%,
+    rgba(180, 100, 255, 0.15) 50%,
+    rgba(100, 40, 180, 0.08) 70%,
     transparent 85%
   );
   filter: blur(100px);
-  opacity: 0.9;
-  border-radius: 50%;
+  opacity: 0.8;
   pointer-events: none;
   z-index: 0;
-  animation: haloPulse 18s ease-in-out infinite,
-             haloDrift 90s linear infinite;
+  animation: auraDriftMauve 70s ease-in-out infinite alternate;
 }
 
-/* 🌠 Animation pulsation lumineuse du halo */
-@keyframes haloPulse {
+/* ✨ Mouvement subtil et atmosphérique */
+@keyframes auraDriftMauve {
   0% {
+    transform: translate(-50%, -50%) rotate(10deg) scale(1);
     opacity: 0.75;
-    scale: 1;
   }
   50% {
-    opacity: 1;
-    scale: 1.05;
+    transform: translate(-48%, -52%) rotate(14deg) scale(1.05);
+    opacity: 0.9;
   }
   100% {
+    transform: translate(-50%, -50%) rotate(12deg) scale(1);
     opacity: 0.75;
-    scale: 1;
-  }
-}
-
-/* 🌎 Mouvement lent pour effet orbital */
-@keyframes haloDrift {
-  0% {
-    transform: translateX(-50%) rotate(0deg);
-  }
-  50% {
-    transform: translateX(-52%) rotate(0.5deg);
-  }
-  100% {
-    transform: translateX(-50%) rotate(0deg);
   }
 }
 
 /* =========================================================
-   💫 Animation lente générique (utilisée sur le logo)
+   ✨ Animation douce sur les éléments (optionnel)
    ========================================================= */
-@keyframes pulse-slow {
-  0%, 100% {
-    opacity: 0.8;
-    scale: 1;
-  }
-  50% {
-    opacity: 1;
-    scale: 1.05;
-  }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 12s ease-in-out infinite;
-}
-
-/* =========================================================
-   🌊 Effet sonar PFOTC – onde lumineuse subtile
-   ========================================================= */
-@keyframes sonar {
-  0% {
-    transform: scale(0.5);
-    opacity: 0.6;
-    border-width: 2px;
-  }
-  70% {
-    opacity: 0.2;
-  }
-  100% {
-    transform: scale(2.5);
+@keyframes fadeInUp {
+  from {
     opacity: 0;
-    border-width: 1px;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.animate-sonar {
-  animation: sonar 2.8s ease-out 0.5s;
+.animate-fadeInUp {
+  animation: fadeInUp 1.5s ease-out forwards;
 }
